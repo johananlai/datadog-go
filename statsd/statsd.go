@@ -122,7 +122,7 @@ func New(addr string) (*Client, error) {
 // NewWithWriter creates a new Client with given writer. Writer is a
 // io.WriteCloser + SetWriteTimeout(time.Duration) error
 func NewWithWriter(w statsdWriter) (*Client, error) {
-	client := &Client{writer: w, SkipErrors: false}
+	client := &Client{writer: w, SkipErrors: false, flushTime: time.ParseDuration("60s")}
 	return client, nil
 }
 
